@@ -34,7 +34,7 @@ const cookieSession = require('cookie-session');
   controllers: [AppController],
   providers: [
     AppService,
-    // TODO: Global scope Pipe
+    // Global scope Pipe
     {
       provide: APP_PIPE,
       useValue: new ValidationPipe({ whitelist: true }),
@@ -42,12 +42,14 @@ const cookieSession = require('cookie-session');
   ],
 })
 export class AppModule {
-  // TODO: Global scope Middleware
+  constructor(private configService: ConfigService) {}
+
+  // Global scope Middleware
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(
         cookieSession({
-          keys: ['testingCookie'],
+          keys: [this.configService.get('COOKIE_KEY')],
         }),
       )
       .forRoutes('*');

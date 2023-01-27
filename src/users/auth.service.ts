@@ -14,14 +14,14 @@ export class AuthService {
   constructor(private usersService: UsersService) {}
 
   async signup(email: string, password: string) {
-    //TODO: See if email is in use
+    // See if email is in use
     const users = await this.usersService.find(email);
 
     if (users.length) {
       throw new BadRequestException('Email in use');
     }
 
-    //TODO: Hash the users passwords
+    // Hash the users passwords
     // generate a salt
     const salt = randomBytes(8).toString('hex');
 
@@ -31,11 +31,11 @@ export class AuthService {
     // join the hashed result and the salt together
     const result = salt + '.' + hash.toString('hex');
 
-    //TODO: Create a new user and save it
+    // Create a new user and save it
 
     const user = await this.usersService.create(email, result);
 
-    //TODO: Return user
+    // Return user
     return user;
   }
 

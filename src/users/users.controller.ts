@@ -18,7 +18,7 @@ import { UserDto } from './dtos/user.dto';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { UserEntity } from './user.entity';
-//import { AuthGuard } from 'src/guards/auth.guard';
+import { AuthGuard } from 'src/guards/auth.guard';
 import { NotFoundException } from '@nestjs/common';
 
 @Controller('auth')
@@ -28,35 +28,8 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
-  /*  
-  TODO: Test code to obtain cookie information
-
-  @Get('/colors/:color')
-  setColor(@Param('color') color: string, @Session() session: any) {
-    session.color = color;
-  }
-
-  @Get('/colors/')
-  getColor(@Session() session: any) {
-    return session.color;
-  }
-
-  */
-
-  /* 
-  TODO: /whoiam with the Session decorator.
   @Get('/whoiam')
-  whoIAm(@Session() session: any) { 
-    return this.usersService.findOne(session.userId);
-  }
-  */
-
-  /*
-  TODO: /whoiam with the CUSTOM -> CurrentUser decorator.
-  */
-
-  @Get('/whoiam')
-  //@UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   whoIAm(@CurrentUser() user: UserEntity) {
     return user;
   }

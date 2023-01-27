@@ -6,8 +6,10 @@ import { UsersService } from './users.service';
 
 describe('AuthService', () => {
   let service: AuthService;
-  // TODO: El Partial sirve para que typescript no diga que faltan mockear algunas funciones.
-  // Con el Partial mockeamos SOLO lo que queremos utilizar (En este caso find() y create())
+
+  // The Partial is used so that typescript does not say that some functions are missing.
+  // With the Partial we mocke ONLY what we want to use (In this case find() and create())
+
   let mockUsersService: Partial<UsersService>;
 
   beforeEach(async () => {
@@ -31,7 +33,7 @@ describe('AuthService', () => {
     const module = await Test.createTestingModule({
       providers: [
         AuthService,
-        // TODO: Si alguien pregunta por (Provide: UserService) USERSERVICE, entonces usa estos valores (UseValue: mockUsersService)
+        // If someone asks for (Provide: UserService) USERSERVICE, then use these values (UseValue: mockUsersService)
         {
           provide: UsersService,
           useValue: mockUsersService,
