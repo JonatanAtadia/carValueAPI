@@ -18,8 +18,6 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
 ## Test
@@ -31,23 +29,74 @@ $ npm run test
 # e2e tests
 $ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
 ```
 
-## Database
+## Users Resquest HTTP
+* Create a new user
+POST http://localhost:3000/auth/signup
+content-type: application/json
 
-I am using sqlite.
+{
+  "email": "test1@test.com",
+  "password": "12345"
+}
 
-To get one locally, create the `.env` file and inside a variable with the name `DB_NAME`
+* Sign in as an existing user
+POST http://localhost:3000/auth/signin
+content-type: application/json
 
-## Cookie Key
+{
+  "email": "test1@test.com",
+  "password": "12345"
+}
 
-In the `.env` file create a variable with the name `COOKIE_KEY`
+* Sign Out
+POST http://localhost:3000/auth/signout
 
-## Example .env
+* Get the currently signed in user
+GET http://localhost:3000/auth/whoiam
 
-```bash
-DB_NAME=test.sqlite
-COOKIE_KEY=cookieTestingTest
-```
+* Find a particular user with a given ID
+GET http://localhost:3000/auth/4
+
+* Find all users with a given email
+GET http://localhost:3000/auth?email=test@test.com
+
+* Delete a user given id
+DELETE http://localhost:3000/auth/3
+
+* Update a user
+PATCH http://localhost:3000/auth/4
+content-type: application/json
+
+{
+  "password": "aaaaa"
+}
+
+
+## Reports Requests HTTP
+
+* Create a new report
+POST http://localhost:3000/reports
+Content-Type: application/json
+
+{
+    "price": 50000,
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2007,
+    "lng": 0,
+    "lat": 0,
+    "mileage": 60000
+}
+
+* Approve an existing report
+PATCH http://localhost:3000/reports/5
+Content-Type: application/json
+
+{
+    "approved": true
+}
+
+* Get an estimate for an  existing report
+GET http://localhost:3000/reports?make=toyota&model=corolla&lng=0&lat=0&mileage=20000&year=1980
