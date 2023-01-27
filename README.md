@@ -35,7 +35,19 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Database
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+I am using sqlite.
 
+To get one locally, create the `.env` file and inside a variable with the name `DB_NAME`
+
+## Cookie Key
+
+In the `.env` file create a variable with the name `COOKIE_KEY`
+
+## Example .env
+
+```bash
+DB_NAME=test.sqlite
+COOKIE_KEY=cookieTestingTest
+```
