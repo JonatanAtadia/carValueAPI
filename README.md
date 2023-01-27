@@ -1,7 +1,12 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+USED CAR PRICING API
+
+1 - Users sign up with email/password
+2 - Users get an estimate for how much their car is worth based on the make/model/year/mileage
+3 - Users can report what they sold their vehicules for
+4 - Admins hace to approve reported sales
 
 ## Installation
 
