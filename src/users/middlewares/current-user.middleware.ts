@@ -3,11 +3,9 @@ import { Request, Response, NextFunction } from 'express';
 import { UsersService } from '../users.service';
 import { UserEntity } from '../user.entity';
 
-declare global {
-  namespace Express {
-    interface Request {
-      currentUser?: UserEntity;
-    }
+declare module 'express-serve-static-core' {
+  interface Request {
+    currentUser?: UserEntity;
   }
 }
 

@@ -8,8 +8,7 @@ import { UsersModule } from './users/users.module';
 import { ReportsModule } from './reports/reports.module';
 import { UserEntity } from './users/user.entity';
 import { ReportEntity } from './reports/report.entity';
-
-const cookieSession = require('cookie-session');
+import cookieSession from 'cookie-session';
 
 @Module({
   imports: [
